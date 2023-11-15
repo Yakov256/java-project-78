@@ -18,8 +18,8 @@ public class StringSchema {
         return this;
     }
 
-    public StringSchema minLength(int minLength) {
-        this.minLength = minLength;
+    public StringSchema minLength(int strMinLength) {
+        this.minLength = strMinLength;
         return this;
     }
 
