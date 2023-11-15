@@ -28,20 +28,25 @@ public class StringSchema {
         return this;
     }
 
-    public boolean isValid() {
-        if (required && testString == null) {
+    public boolean isValid(Object strObject) {
+        if (required && strObject == null) {
             return false;
         }
 
-        if (required && testString.equals("")) {
+        String str = "";
+        if (strObject != null) {
+            str = strObject.toString();
+        }
+
+        if (required && str.equals("")) {
             return false;
         }
 
-        if (minLength > 0 && testString.length() < minLength) {
+        if (minLength > 0 && str.length() < minLength) {
             return false;
         }
 
-        if (contains != null && !(testString.contains(contains))) {
+        if (contains != null && !(str.contains(contains))) {
             return false;
         }
 

@@ -2,7 +2,7 @@ package hexlet.code;
 
 public class App {
     public static void main(String[] args) {
-
+/*
         StringSchema sSchema1 = new StringSchema();
         System.out.println(sSchema1.isValid());
         sSchema1.contains("123");
@@ -17,6 +17,6 @@ public class App {
         System.out.println(sSchema3.isValid());
         sSchema3.required();
         System.out.println(sSchema3.isValid());
-
+*/
     }
 }
