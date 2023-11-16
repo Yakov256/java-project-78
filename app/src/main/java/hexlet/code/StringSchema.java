@@ -27,7 +27,7 @@ public class StringSchema extends BaseSchema {
         return this;
     }
 
-    public boolean isValid(Object strObject) {
+    public boolean isValid(String strObject) {
         if (required && strObject == null) {
             return false;
         }

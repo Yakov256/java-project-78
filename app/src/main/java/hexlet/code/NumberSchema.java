@@ -26,14 +26,9 @@ public class NumberSchema {
         return this;
     }
 
-    //public boolean isValid(Object numberObject) {
     public boolean isValid(Integer numberObject) {
         if (numberObject == null) {
-            if (required) {
-                return false;
-             } else {
-                return true;
-            }
+            return !required;
         }
 
         int number = numberObject;
