@@ -1,10 +1,8 @@
 package hexlet.code;
 
-public class StringSchema {
+public class StringSchema extends BaseSchema {
 
-
-    //required() — делает данные обязательными для заполнения. Не null и не пустуя строка.
-    private boolean required;
+    //private boolean required;
 
     //minLength() — добавляет в схему ограничение минимальной длины для строки. Строка должна быть равна или длиннее.
     private int minLength;
@@ -13,8 +11,9 @@ public class StringSchema {
 
     String testString = "";
 
+
     public StringSchema required() {
-        this.required = true;
+        super.required = true;
         return this;
     }
 
@@ -52,7 +51,5 @@ public class StringSchema {
 
         return true;
     }
-
-
 
 }

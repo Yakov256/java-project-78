@@ -7,8 +7,50 @@ public class NumberSchema {
     //positive() — добавляет ограничение на знак числа. Число должно быть положительным
     private boolean positive;
     //range() — добавляет допустимый диапазон, в который должно попадать значение числа включая границы
-    private double rangeMin;
-    private double rangeMax;
+    private int rangeMin = Integer.MIN_VALUE;
+    private int rangeMax = Integer.MAX_VALUE;
 
+    public NumberSchema required() {
+        this.required = true;
+        return this;
+    }
+
+    public NumberSchema positive() {
+        this.positive = true;
+        return this;
+    }
+
+    public NumberSchema range(int min, int max) {
+        this.rangeMin = min;
+        this.rangeMax = max;
+        return this;
+    }
+
+    //public boolean isValid(Object numberObject) {
+    public boolean isValid(Integer numberObject) {
+        if (numberObject == null) {
+            if (required) {
+                return false;
+             } else {
+                return true;
+            }
+        }
+
+        int number = numberObject;
+
+        if (positive && number < 0) {
+            return false;
+        }
+
+        if (number > rangeMax) {
+            return false;
+        }
+
+        if (number < rangeMin) {
+            return false;
+        }
+
+        return true;
+    }
 
 }
