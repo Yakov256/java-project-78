@@ -8,4 +8,12 @@ public class BaseSchema {
         this.required = true;
         return this;
     }*/
+
+    public boolean isValid(Object testObject) {
+        if (testObject == null) {
+            return !required;
+        }
+        return true;
+    }
+
 }

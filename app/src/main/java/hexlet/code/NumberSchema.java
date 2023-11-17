@@ -1,6 +1,6 @@
 package hexlet.code;
 
-public class NumberSchema {
+public class NumberSchema extends BaseSchema {
 
     //required() — добавляет в схему ограничение, которое не позволяет использовать null в качестве значения
     private boolean required;

@@ -1,7 +1,6 @@
 package hexlet.code;
 
 public class StringSchema extends BaseSchema {
-
     //private boolean required;
 
     //minLength() — добавляет в схему ограничение минимальной длины для строки. Строка должна быть равна или длиннее.
@@ -10,7 +9,6 @@ public class StringSchema extends BaseSchema {
     private String contains;
 
     String testString = "";
-
 
     public StringSchema required() {
         super.required = true;
