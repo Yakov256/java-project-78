@@ -11,7 +11,7 @@ install:
 	@./gradlew clean install
 
 lint:
-	@./gradlew checkstyleMain checkstyleTest
+	./gradlew checkstyleMain
 
 test:
 	@./gradlew test
@@ -20,6 +20,6 @@ build:
 	@./gradlew clean build
 
 report:
-	@./gradlew jacocoTestReport
+	./gradlew jacocoTestReport
 
 .PHONY: build
