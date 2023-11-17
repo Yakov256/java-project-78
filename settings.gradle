@@ -1,0 +1,3 @@
+include 'app:app'
+findProject(':app:app')?.name = 'app'
+include 'app'
