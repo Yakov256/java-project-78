@@ -26,26 +26,26 @@ public class NumberSchema extends BaseSchema {
         return this;
     }
 
-    public boolean isValid(Integer numberObject) {
-        if (numberObject == null) {
+    public boolean isValid(Integer number) {
+        boolean rez = true;
+
+        if (number == null) {
             return !required;
         }
 
-        int number = numberObject;
-
         if (positive && number < 0) {
-            return false;
+            rez = false;
         }
 
         if (number > rangeMax) {
-            return false;
+            rez = false;
         }
 
         if (number < rangeMin) {
-            return false;
+            rez = false;
         }
 
-        return true;
+        return rez;
     }
 
 }
