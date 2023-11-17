@@ -25,29 +25,30 @@ public class StringSchema extends BaseSchema {
         return this;
     }
 
-    public boolean isValid(String strObject) {
-        if (required && strObject == null) {
-            return false;
-        }
+    public boolean isValid(String str) {
+        boolean rez = true;
 
-        String str = "";
-        if (strObject != null) {
-            str = strObject.toString();
+        if (str == null) {
+            if (required) {
+                return false;
+            } else {
+                str = "";
+            }
         }
 
         if (required && str.equals("")) {
-            return false;
+            rez = false;
         }
 
-        if (minLength > 0 && str.length() < minLength) {
-            return false;
+        if (str.length() < minLength) {
+            rez = false;
         }
 
         if (contains != null && !(str.contains(contains))) {
-            return false;
+            rez = false;
         }
 
-        return true;
+        return rez;
     }
 
 }
