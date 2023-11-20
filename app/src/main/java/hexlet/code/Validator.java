@@ -6,15 +6,21 @@ public class Validator {
     private BaseSchema schema;
 
     public StringSchema string() {
-        return (StringSchema) schema;
+        StringSchema strSchema = new StringSchema();
+        schema = strSchema;
+        return strSchema;
     }
 
     public NumberSchema number() {
-        return (NumberSchema) schema;
+        NumberSchema numberSchema = new NumberSchema();
+        schema = numberSchema;
+        return numberSchema;
     }
 
     public MapSchema map() {
-        return (MapSchema) schema;
+        MapSchema mapSchema = new MapSchema();
+        schema = mapSchema;
+        return mapSchema;
     }
 
 }

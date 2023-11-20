@@ -10,6 +10,8 @@ public class MapSchema extends BaseSchema {
     // Количество пар ключ-значений в объекте Map должно быть равно заданному
     private Integer sizeof = null;
 
+    private Map<String, BaseSchema> schemas;
+
     public MapSchema required() {
         super.required = true;
         return this;
@@ -20,12 +22,29 @@ public class MapSchema extends BaseSchema {
         return this;
     }
 
+    public void shape(Map<String, BaseSchema> newSchemas) {
+        this.schemas = newSchemas;
+    }
+
+    private boolean deepIsValid(Map testMap) {
+        boolean rez = true;
+
+        for (Map.Entry<String, BaseSchema> entry : schemas.entrySet()) {
+            System.out.println("ID =  " + entry.getKey() + " День недели = " + entry.getValue());
+        }
+
+        return rez;
+    }
 
     public boolean isValid(Map testMap) {
         boolean rez = true;
 
         if (testMap == null) {
             return !required;
+        }
+
+        if (schemas != null) {
+            rez = deepIsValid(testMap);
         }
 
         if (sizeof != null && testMap.size() != sizeof) {
