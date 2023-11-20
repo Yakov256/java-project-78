@@ -17,7 +17,6 @@ public class App {
         System.out.println(sSchema3.isValid());
         sSchema3.required();
         System.out.println(sSchema3.isValid());
-
 */
     }
 }
