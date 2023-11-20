@@ -30,7 +30,13 @@ public class MapSchema extends BaseSchema {
         boolean rez = true;
 
         for (Map.Entry<String, BaseSchema> entry : schemas.entrySet()) {
-            System.out.println("ID =  " + entry.getKey() + " День недели = " + entry.getValue());
+            //System.out.println("ID =  " + entry.getKey() + " День недели = " + entry.getValue());
+            if (testMap.containsKey(entry.getKey())) {
+                System.out.println("Пороверяем: " + entry.getKey() + " - " + testMap.get(entry.getKey()));
+                System.out.println("isValid: " + entry.getValue().isValid(testMap.get(entry.getKey())));
+            }
+
+
         }
 
         return rez;

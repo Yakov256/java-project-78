@@ -89,26 +89,17 @@ public class SchemaTest {
         assertFalse(mSchema.sizeof(3).isValid(testMap));
         assertTrue(mSchema.sizeof(2).isValid(testMap));
     }
-/*
+
     @Test
     void apSchemaDeepIsValidTest() {
 
         Validator v = new Validator();
         MapSchema schema = v.map();
 
-// shape позволяет описывать валидацию для значений каждого ключа объекта Map
-// Создаем набор схем для проверки каждого ключа проверяемого объекта
-// Для значения каждого ключа - своя схема
         Map<String, BaseSchema> schemas = new HashMap<>();
-
-// Определяем схемы валидации для значений свойств "name" и "age"
-// Имя должно быть строкой, обязательно для заполнения
         schemas.put("name", v.string().required());
-// Возраст должен быть положительным числом
         schemas.put("age", v.number().positive());
 
-// Настраиваем схему `MapSchema`
-// Передаем созданный набор схем в метод shape()
         schema.shape(schemas);
 
 // Проверяем объекты
@@ -133,5 +124,5 @@ public class SchemaTest {
         schema.isValid(human4); // false
 
     }
-*/
+
 }
