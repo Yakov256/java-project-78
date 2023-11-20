@@ -6,9 +6,9 @@ public class StringSchema extends BaseSchema {
     //minLength() — добавляет в схему ограничение минимальной длины для строки. Строка должна быть равна или длиннее.
     private int minLength;
     //contains() — добавляет в схему ограничение по содержимому строки. Строка должна содержать определённую подстроку
-    private String contains;
+    private String contains = null;
 
-    String testString = "";
+    //String testString = "";
 
     public StringSchema required() {
         super.required = true;
@@ -29,11 +29,7 @@ public class StringSchema extends BaseSchema {
         boolean rez = true;
 
         if (str == null) {
-            if (required) {
-                return false;
-            } else {
-                str = "";
-            }
+            return !(required || contains != null);
         }
 
         if (required && str.equals("")) {
