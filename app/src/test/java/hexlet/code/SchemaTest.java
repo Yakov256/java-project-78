@@ -2,6 +2,9 @@ package hexlet.code;
 
 import org.junit.jupiter.api.Test;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 
@@ -52,6 +55,23 @@ public class SchemaTest {
         assertTrue(nSchema.isValid(-100));
         assertFalse(nSchema.range(-15, 50).isValid(-100));
         assertFalse(nSchema.range(-15, 50).isValid(60));
+    }
+
+    @Test
+    void mapSchemaRequiredTest() {
+        MapSchema mSchema = new MapSchema();
+        assertTrue(mSchema.isValid(null));
+        assertFalse(mSchema.required().isValid(null));
+    }
+
+    void mapSchemaSizeofTest() {
+        MapSchema mSchema = new MapSchema();
+        Map<String, String> testMap = new HashMap<>();
+        testMap.put("key1", "value1");
+        testMap.put("key2", "value2");
+        assertTrue(mSchema.isValid(testMap));
+        assertFalse(mSchema.sizeof(3).isValid(testMap));
+        assertTrue(mSchema.sizeof(2).isValid(testMap));
     }
 
 }
