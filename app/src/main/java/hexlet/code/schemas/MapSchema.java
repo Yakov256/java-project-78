@@ -35,9 +35,16 @@ public class MapSchema extends BaseSchema {
 
         } else if (bs instanceof NumberSchema) {
             NumberSchema ns = (NumberSchema) bs;
-            if (!ns.isValid((Integer) testObject)) {
-                isValid = false;
+            if (testObject == null) {
+                if (!ns.isValid((String) testObject)) {
+                    isValid = false;
+                }
+            } else {
+                if (!ns.isValid((int) testObject)) {
+                    isValid = false;
+                }
             }
+
 
         } else if (bs instanceof MapSchema) {
             MapSchema ms = (MapSchema) bs;

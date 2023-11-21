@@ -57,6 +57,7 @@ public class SchemaTest {
         Validator v = new Validator();
         NumberSchema nSchema = v.number();
 
+        assertFalse(nSchema.isValid("5"));
         assertTrue(nSchema.isValid(null));
         assertFalse(nSchema.required().isValid(null));
     }

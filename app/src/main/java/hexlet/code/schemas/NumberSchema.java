@@ -24,12 +24,8 @@ public class NumberSchema extends BaseSchema {
         return this;
     }
 
-    public boolean isValid(Integer number) {
+    public boolean isValid(int number) {
         boolean rez = true;
-
-        if (number == null) {
-            return !required;
-        }
 
         if (positive && number < 0) {
             rez = false;
@@ -40,6 +36,27 @@ public class NumberSchema extends BaseSchema {
         }
 
         return rez;
+    }
+
+    public boolean isValid(String strNumber) {
+        //boolean rez = true;
+
+        if (strNumber == null) {
+            return !required;
+        }
+/*
+        Integer number = Integer.parseInt(strNumber);
+
+        if (positive && number < 0) {
+            rez = false;
+        }
+
+        if (rangeMin > number || number > rangeMax) {
+            rez = false;
+        }
+
+        return rez;*/
+        return false;
     }
 
 }
