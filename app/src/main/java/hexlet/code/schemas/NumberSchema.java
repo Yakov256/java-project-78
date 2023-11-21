@@ -1,6 +1,6 @@
 package hexlet.code.schemas;
 
-public class NumberSchema extends BaseSchema {
+public final class NumberSchema extends BaseSchema {
     private boolean required;
     //positive — добавляет ограничение на знак числа. Число должно быть положительным
     private boolean positive;

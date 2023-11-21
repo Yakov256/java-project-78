@@ -2,7 +2,7 @@ package hexlet.code.schemas;
 
 import java.util.Map;
 
-public class MapSchema extends BaseSchema {
+public final class MapSchema extends BaseSchema {
 
     //sizeof — добавляет ограничение на размер словаря.
     // Количество пар ключ-значений в объекте Map должно быть равно заданному

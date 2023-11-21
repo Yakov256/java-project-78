@@ -1,6 +1,6 @@
 package hexlet.code.schemas;
 
-public class StringSchema extends BaseSchema {
+public final class StringSchema extends BaseSchema {
     //minLength() — добавляет в схему ограничение минимальной длины для строки. Строка должна быть равна или длиннее.
     private int minLength;
     //contains() — добавляет в схему ограничение по содержимому строки. Строка должна содержать определённую подстроку
