@@ -35,7 +35,7 @@ public class NumberSchema extends BaseSchema {
             rez = false;
         }
 
-        if (rangeMin < number || number > rangeMax) {
+        if (rangeMin > number || number > rangeMax) {
             rez = false;
         }
 
