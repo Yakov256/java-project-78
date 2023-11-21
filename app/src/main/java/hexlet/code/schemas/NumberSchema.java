@@ -27,7 +27,7 @@ public class NumberSchema extends BaseSchema {
     public boolean isValid(int number) {
         boolean rez = true;
 
-        if (positive && number < 0) {
+        if (positive && number <= 0) {
             rez = false;
         }
 

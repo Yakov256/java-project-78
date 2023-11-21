@@ -53,23 +53,31 @@ public class SchemaTest {
     }
 
     @Test
-    void numberSchemaRequiredTest() {
+    void numberSchemaTest() {
         Validator v = new Validator();
-        NumberSchema nSchema = v.number();
+        NumberSchema schema = v.number();
 
-        assertFalse(nSchema.isValid("5"));
-        assertTrue(nSchema.isValid(null));
-        assertFalse(nSchema.required().isValid(null));
-    }
+        // Пока не вызван метод required(), null считается валидным
+        assertTrue(schema.isValid(null)); // true
+        assertTrue(schema.positive().isValid(null)); // true
 
-    @Test
-    void numberSchemaRangeTest() {
-        Validator v = new Validator();
-        NumberSchema nSchema = v.number();
+        schema.required();
 
-        assertTrue(nSchema.isValid(-100));
-        assertFalse(nSchema.range(-15, 50).isValid(-100));
-        assertFalse(nSchema.range(-15, 50).isValid(60));
+        assertFalse(schema.isValid(null)); // false
+        assertFalse(schema.isValid("5")); // false
+        assertTrue(schema.isValid(10)); // true
+
+        // Потому что ранее мы вызвали метод positive()
+        assertFalse(schema.isValid(-10)); // false
+        //  Ноль — не положительное число
+        assertFalse(schema.isValid(0)); // false
+
+        schema.range(5, 10);
+
+        assertTrue(schema.isValid(5)); // true
+        assertTrue(schema.isValid(10)); // true
+        assertFalse(schema.isValid(4)); // false
+        assertFalse(schema.isValid(11)); // false
     }
 
     @Test
