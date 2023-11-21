@@ -1,7 +1,7 @@
 package hexlet.code;
 
 public class BaseSchema {
-    //required() — делает данные обязательными для заполнения. Не null и не пустуя строка.
+    //required — делает данные обязательными для заполнения. Не null.
     protected boolean required;
 
     /*public boolean isValid(Object testObject) {
