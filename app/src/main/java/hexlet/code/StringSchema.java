@@ -6,8 +6,6 @@ public class StringSchema extends BaseSchema {
     //contains() — добавляет в схему ограничение по содержимому строки. Строка должна содержать определённую подстроку
     private String contains = null;
 
-    //String testString = "";
-
     public StringSchema required() {
         super.required = true;
         return this;

@@ -54,8 +54,6 @@ public class MapSchema extends BaseSchema {
 
         for (Map.Entry<String, BaseSchema> entry : schemas.entrySet()) {
 
-            //if (testMap.containsKey(entry.getKey())) {
-
             if (!commonIsValid(entry.getValue(), testMap.get(entry.getKey()))) {
                 isValid = false;
             }
@@ -78,7 +76,7 @@ public class MapSchema extends BaseSchema {
                     isValid = false;
                 }
             }*/
-            //}
+
         }
 
         return isValid;
