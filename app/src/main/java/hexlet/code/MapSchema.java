@@ -32,30 +32,26 @@ public class MapSchema extends BaseSchema {
         for (Map.Entry<String, BaseSchema> entry : schemas.entrySet()) {
 
             if (testMap.containsKey(entry.getKey())) {
-                //System.out.println("Пороверяем: " + entry.getKey() + " - " + testMap.get(entry.getKey()));
 
                 if (entry.getValue() instanceof StringSchema) {
                     StringSchema ss = (StringSchema) entry.getValue();
-                    //String str = (String) testMap.get(entry.getKey());
                     if (!ss.isValid((String) testMap.get(entry.getKey()))) {
                         isValid = false;
                     }
 
-                    //System.out.println("Value: " + ss.isValid((String) testMap.get(entry.getKey())));
                 } else if (entry.getValue() instanceof NumberSchema) {
                     NumberSchema ns = (NumberSchema) entry.getValue();
                     if (!ns.isValid((Integer) testMap.get(entry.getKey()))) {
                         isValid = false;
                     }
-                    //Integer number = (Integer) testMap.get(entry.getKey());
-                    //System.out.println("Value: " + ns.isValid((Integer) testMap.get(entry.getKey())));
-                } /*else if (entry.getValue() instanceof MapSchema) {
+
+                } else if (entry.getValue() instanceof MapSchema) {
                     MapSchema ms = (MapSchema) entry.getValue();
-                    System.out.println("Value: " + ms.isValid((MapSchema) testMap.get(entry.getKey())));
-                }*/
-
+                    if (!ms.isValid((Map) testMap.get(entry.getKey()))) {
+                        isValid = false;
+                    }
+                }
             }
-
         }
 
         return isValid;
