@@ -1,4 +1,4 @@
-package hexlet.code;
+package hexlet.code.schemas;
 
 public class BaseSchema {
     //required — делает данные обязательными для заполнения. Не null.
