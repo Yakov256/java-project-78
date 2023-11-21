@@ -27,19 +27,38 @@ public class MapSchema extends BaseSchema {
     }
 
     private boolean deepIsValid(Map testMap) {
-        boolean rez = true;
+        boolean isValid = true;
 
         for (Map.Entry<String, BaseSchema> entry : schemas.entrySet()) {
-            //System.out.println("ID =  " + entry.getKey() + " День недели = " + entry.getValue());
-            if (testMap.containsKey(entry.getKey())) {
-                System.out.println("Пороверяем: " + entry.getKey() + " - " + testMap.get(entry.getKey()));
-                System.out.println("isValid: " + entry.getValue().isValid(testMap.get(entry.getKey())));
-            }
 
+            if (testMap.containsKey(entry.getKey())) {
+                //System.out.println("Пороверяем: " + entry.getKey() + " - " + testMap.get(entry.getKey()));
+
+                if (entry.getValue() instanceof StringSchema) {
+                    StringSchema ss = (StringSchema) entry.getValue();
+                    //String str = (String) testMap.get(entry.getKey());
+                    if (!ss.isValid((String) testMap.get(entry.getKey()))) {
+                        isValid = false;
+                    }
+
+                    //System.out.println("Value: " + ss.isValid((String) testMap.get(entry.getKey())));
+                } else if (entry.getValue() instanceof NumberSchema) {
+                    NumberSchema ns = (NumberSchema) entry.getValue();
+                    if (!ns.isValid((Integer) testMap.get(entry.getKey()))) {
+                        isValid = false;
+                    }
+                    //Integer number = (Integer) testMap.get(entry.getKey());
+                    //System.out.println("Value: " + ns.isValid((Integer) testMap.get(entry.getKey())));
+                } /*else if (entry.getValue() instanceof MapSchema) {
+                    MapSchema ms = (MapSchema) entry.getValue();
+                    System.out.println("Value: " + ms.isValid((MapSchema) testMap.get(entry.getKey())));
+                }*/
+
+            }
 
         }
 
-        return rez;
+        return isValid;
     }
 
     public boolean isValid(Map testMap) {
