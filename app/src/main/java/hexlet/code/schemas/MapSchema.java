@@ -45,7 +45,6 @@ public final class MapSchema extends BaseSchema {
                 }
             }
 
-
         } else if (bs instanceof MapSchema) {
             MapSchema ms = (MapSchema) bs;
             if (!ms.isValid((Map) testObject)) {
@@ -63,6 +62,7 @@ public final class MapSchema extends BaseSchema {
 
             if (!commonIsValid(entry.getValue(), testMap.get(entry.getKey()))) {
                 isValid = false;
+                break;
             }
             /*
             if (entry.getValue() instanceof StringSchema) {
