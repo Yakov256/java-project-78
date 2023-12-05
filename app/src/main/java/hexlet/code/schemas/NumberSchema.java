@@ -1,6 +1,5 @@
 package hexlet.code.schemas;
 
-import java.util.Objects;
 import java.util.function.Predicate;
 
 public final class NumberSchema extends BaseSchema {
@@ -17,15 +16,34 @@ public final class NumberSchema extends BaseSchema {
         this.required = true;
 
         System.out.println("required - super.checkouts.add(n -> n != null)");
-        super.checkouts.add(n -> n != null);
+        super.checkouts.add(n -> n != null || !required);
         return this;
     }
 
     public NumberSchema positive() {
         this.positive = true;
 
-        System.out.println("positive() - super.checkouts.add(n -> (Integer) n >= 0);");
-        super.checkouts.add(n -> (Integer) n >= 0);
+        System.out.println("positive() - super.checkouts.add(n -> (Integer) n >= 0);" + " required=" + required);
+        super.checkouts.add(n -> {
+            if (n == null) {
+                if (required) {
+                    return false;
+                } else if (positive) {
+                    return true;
+                }
+            } else {
+                try {
+                    if ((Integer) n <= 0) {
+                        return false;
+                    }
+                } catch (ClassCastException e) {
+                    return false;
+                }
+            }
+
+            return true;
+            //return (n == null && required == false) || (Integer) n >= 0;
+        });
         return this;
     }
 
@@ -33,7 +51,7 @@ public final class NumberSchema extends BaseSchema {
         this.rangeMin = min;
         this.rangeMax = max;
 
-        super.checkouts.add(n -> rangeMin > (Integer) n || (Integer) n > rangeMax);
+        super.checkouts.add(n -> rangeMin <= (Integer) n && (Integer) n <= rangeMax);
         return this;
     }
 
@@ -58,14 +76,14 @@ public final class NumberSchema extends BaseSchema {
         return false;
     }*/
 
-    public Predicate<Integer> getIsValidP() {
+    /*public Predicate<Integer> getIsValidP() {
         return isValidP;
-    }
+    }*/
 
     public NumberSchema() {
         isValidP = number -> {
             boolean rez = true;
-            System.out.println("isValidP:NumberSchema");
+            //System.out.println("isValidP:NumberSchema");
 
             if (positive && number <= 0) {
                 rez = false;

@@ -25,7 +25,7 @@ public class BaseSchema {
 
         boolean rez = true;
         for (Predicate<Object> checkout: checkouts) {
-            if (!checkout.equals(t)) {
+            if (!checkout.test(t)) {
                 rez = false;
             }
             System.out.println("" + checkout + " - " + checkout.equals(t));
@@ -34,14 +34,14 @@ public class BaseSchema {
         return rez;
     }
 
-    private BaseSchema getIsValidP() {
+    /*private BaseSchema getIsValidP() {
         return (BaseSchema) isValidP;
-    }
+    }*/
 
-    public BaseSchema() {
+    /*public BaseSchema() {
         isValidP = t -> {
             return true;
         };
-    }
+    }*/
 
 }
