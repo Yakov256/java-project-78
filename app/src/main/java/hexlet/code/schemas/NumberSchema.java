@@ -10,8 +10,6 @@ public final class NumberSchema extends BaseSchema {
     private int rangeMin = Integer.MIN_VALUE;
     private int rangeMax = Integer.MAX_VALUE;
 
-    //Predicate<Integer> isValidP;
-
     public NumberSchema required() {
         this.required = true;
 
@@ -25,6 +23,7 @@ public final class NumberSchema extends BaseSchema {
 
         //System.out.println("positive() - super.checkouts.add(n -> (Integer) n >= 0);" + " required=" + required);
         super.checkouts.add(n -> {
+            boolean rez = true;
             if (n == null) {
                 if (required) {
                     return false;
@@ -34,14 +33,14 @@ public final class NumberSchema extends BaseSchema {
             } else {
                 try {
                     if ((Integer) n <= 0) {
-                        return false;
+                        rez = false;
                     }
                 } catch (ClassCastException e) {
-                    return false;
+                    rez = false;
                 }
             }
 
-            return true;
+            return rez;
             //return (n == null && required == false) || (Integer) n >= 0;
         });
         return this;

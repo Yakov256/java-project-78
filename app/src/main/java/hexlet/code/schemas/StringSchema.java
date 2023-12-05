@@ -8,20 +8,32 @@ public final class StringSchema extends BaseSchema {
 
     public StringSchema required() {
         super.required = true;
+
+        super.checkouts.add(s -> !(required && (s.equals("") || s == null)));
         return this;
     }
 
     public StringSchema minLength(int strMinLength) {
         this.minLength = strMinLength;
+
+        super.checkouts.add(s -> s.toString().length() >= minLength);
         return this;
     }
 
     public StringSchema contains(String includeString) {
         this.contains = includeString;
+
+        super.checkouts.add(s -> {
+            if (s == null) {
+                return false;
+            } else {
+                return (s.toString().contains(contains));
+            }
+        });
         return this;
     }
 
-    public boolean isValid(String str) {
+    /*public boolean isValid(String str) {
         boolean rez = true;
 
         if (str == null) {
@@ -41,6 +53,6 @@ public final class StringSchema extends BaseSchema {
         }
 
         return rez;
-    }
+    }*/
 
 }

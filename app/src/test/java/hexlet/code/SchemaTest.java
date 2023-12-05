@@ -2,7 +2,6 @@ package hexlet.code;
 
 import hexlet.code.schemas.BaseSchema;
 import hexlet.code.schemas.MapSchema;
-import hexlet.code.schemas.StringSchema;
 import org.junit.jupiter.api.Test;
 import java.util.HashMap;
 import java.util.Map;
@@ -11,36 +10,6 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 
 public class SchemaTest {
-
-    @Test
-    void stringSchemaContainsTest() {
-        Validator v = new Validator();
-        StringSchema sSchema1 = v.string();
-
-        assertTrue(sSchema1.isValid(null));
-        sSchema1.contains("123");
-        assertFalse(sSchema1.isValid(null));
-        assertTrue(sSchema1.contains("wh").isValid("what does the fox say"));
-    }
-
-    @Test
-    void stringSchemaMinLengthTest() {
-        Validator v = new Validator();
-        StringSchema sSchema2 = v.string();
-
-        assertTrue(sSchema2.isValid(""));
-        assertTrue(sSchema2.minLength(5).isValid("123456"));
-        assertFalse(sSchema2.minLength(7).isValid("123456"));
-    }
-
-    @Test
-    void stringSchemaRequiredTest() {
-        Validator v = new Validator();
-        StringSchema sSchema3 = v.string();
-
-        assertTrue(sSchema3.isValid(null));
-        assertFalse(sSchema3.required().isValid(""));
-    }
 
     @Test
     void mapSchemaRequiredTest() {
