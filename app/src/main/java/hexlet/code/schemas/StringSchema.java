@@ -9,7 +9,16 @@ public final class StringSchema extends BaseSchema {
     public StringSchema required() {
         super.required = true;
 
-        super.checkouts.add(s -> !(required && (s.equals("") || s == null)));
+        super.checkouts.add(s -> {
+            if (required) {
+                if (s == null) {
+                    return !required;
+                } else {
+                    return !s.equals("");
+                }
+            }
+            return true;
+        });
         return this;
     }
 
