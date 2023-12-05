@@ -19,7 +19,7 @@ public class BaseSchema {
 
     //Predicate<BaseSchema> isValidP;
 
-    public <T> boolean isValid(T t) {
+    public final <T> boolean isValid(T t) {
         //return isValidP.test(t);
         //return getIsValidP().isValidP.test(t);
 
@@ -28,7 +28,7 @@ public class BaseSchema {
             if (!checkout.test(t)) {
                 rez = false;
             }
-            System.out.println("" + checkout + " - " + checkout.equals(t));
+            //System.out.println("" + checkout + " - " + checkout.equals(t));
         }
 
         return rez;

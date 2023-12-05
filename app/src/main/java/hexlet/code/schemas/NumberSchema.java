@@ -15,7 +15,7 @@ public final class NumberSchema extends BaseSchema {
     public NumberSchema required() {
         this.required = true;
 
-        System.out.println("required - super.checkouts.add(n -> n != null)");
+        //System.out.println("required - super.checkouts.add(n -> n != null)");
         super.checkouts.add(n -> n != null || !required);
         return this;
     }
@@ -23,7 +23,7 @@ public final class NumberSchema extends BaseSchema {
     public NumberSchema positive() {
         this.positive = true;
 
-        System.out.println("positive() - super.checkouts.add(n -> (Integer) n >= 0);" + " required=" + required);
+        //System.out.println("positive() - super.checkouts.add(n -> (Integer) n >= 0);" + " required=" + required);
         super.checkouts.add(n -> {
             if (n == null) {
                 if (required) {
