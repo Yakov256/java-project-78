@@ -1,6 +1,6 @@
 package hexlet.code.schemas;
 
-import java.util.function.Predicate;
+//import java.util.function.Predicate;
 
 public final class NumberSchema extends BaseSchema {
     private boolean required;
@@ -10,7 +10,7 @@ public final class NumberSchema extends BaseSchema {
     private int rangeMin = Integer.MIN_VALUE;
     private int rangeMax = Integer.MAX_VALUE;
 
-    Predicate<Integer> isValidP;
+    //Predicate<Integer> isValidP;
 
     public NumberSchema required() {
         this.required = true;
@@ -80,7 +80,7 @@ public final class NumberSchema extends BaseSchema {
         return isValidP;
     }*/
 
-    public NumberSchema() {
+    /*public NumberSchema() {
         isValidP = number -> {
             boolean rez = true;
             //System.out.println("isValidP:NumberSchema");
@@ -95,5 +95,5 @@ public final class NumberSchema extends BaseSchema {
 
             return rez;
         };
-    }
+    }*/
 }

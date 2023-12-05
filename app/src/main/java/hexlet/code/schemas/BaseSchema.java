@@ -17,7 +17,7 @@ public class BaseSchema {
         return true;
     }*/
 
-    Predicate<BaseSchema> isValidP;
+    //Predicate<BaseSchema> isValidP;
 
     public <T> boolean isValid(T t) {
         //return isValidP.test(t);
