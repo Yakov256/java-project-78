@@ -3,7 +3,7 @@ package hexlet.code.schemas;
 //import java.util.function.Predicate;
 
 public final class NumberSchema extends BaseSchema {
-    private boolean required;
+    //private boolean required;
     //positive — добавляет ограничение на знак числа. Число должно быть положительным
     private boolean positive;
     //range — добавляет допустимый диапазон, в который должно попадать значение числа включая границы
@@ -11,9 +11,8 @@ public final class NumberSchema extends BaseSchema {
     private int rangeMax = Integer.MAX_VALUE;
 
     public NumberSchema required() {
-        this.required = true;
+        required = true;
 
-        //System.out.println("required - super.checkouts.add(n -> n != null)");
         super.checkouts.add(n -> {
             if (n == null) {
                 return !required;
@@ -29,7 +28,6 @@ public final class NumberSchema extends BaseSchema {
     public NumberSchema positive() {
         this.positive = true;
 
-        //System.out.println("positive() - super.checkouts.add(n -> (Integer) n >= 0);" + " required=" + required);
         super.checkouts.add(n -> {
             boolean rez = true;
             if (n == null) {
@@ -39,17 +37,14 @@ public final class NumberSchema extends BaseSchema {
                     return true;
                 }
             } else {
-                try {
-                    if ((Integer) n <= 0) {
-                        rez = false;
-                    }
-                } catch (ClassCastException e) {
+                if (n instanceof Number) {
+                    rez = (Integer) n > 0;
+                } else {
                     rez = false;
                 }
             }
 
             return rez;
-            //return (n == null && required == false) || (Integer) n >= 0;
         });
         return this;
     }
@@ -62,45 +57,4 @@ public final class NumberSchema extends BaseSchema {
         return this;
     }
 
-    /*public boolean isValid(int number) {
-        boolean rez = true;
-
-        if (positive && number <= 0) {
-            rez = false;
-        }
-
-        if (rangeMin > number || number > rangeMax) {
-            rez = false;
-        }
-
-        return rez;
-    }*/
-
-    /*public boolean isValid(String strNumber) {
-        if (strNumber == null) {
-            return !required;
-        }
-        return false;
-    }*/
-
-    /*public Predicate<Integer> getIsValidP() {
-        return isValidP;
-    }*/
-
-    /*public NumberSchema() {
-        isValidP = number -> {
-            boolean rez = true;
-            //System.out.println("isValidP:NumberSchema");
-
-            if (positive && number <= 0) {
-                rez = false;
-            }
-
-            if (rangeMin > number || number > rangeMax) {
-                rez = false;
-            }
-
-            return rez;
-        };
-    }*/
 }

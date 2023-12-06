@@ -42,26 +42,4 @@ public final class StringSchema extends BaseSchema {
         return this;
     }
 
-    /*public boolean isValid(String str) {
-        boolean rez = true;
-
-        if (str == null) {
-            return !(required || contains != null);
-        }
-
-        if (required && str.equals("")) {
-            rez = false;
-        }
-
-        if (str.length() < minLength) {
-            rez = false;
-        }
-
-        if (contains != null && !(str.contains(contains))) {
-            rez = false;
-        }
-
-        return rez;
-    }*/
-
 }

@@ -34,7 +34,7 @@ public class MapSchemaTest {
     }
 
     @Test
-    void mapSchemaDeepIsValidTest() {
+    void mapSchemaNestedMapTest() {
 
         Validator v = new Validator();
         MapSchema schema = v.map();

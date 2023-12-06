@@ -34,9 +34,7 @@ public final class MapSchema extends BaseSchema {
             }
 
             for (Map.Entry<String, BaseSchema> entry : schemas.entrySet()) {
-                //System.out.println(entry.getKey() + ":" + entry.getValue());
                 if (((Map) m).containsKey(entry.getKey())) {
-                    //((Map) m).get(entry.getKey())
                     if (!entry.getValue().isValid(((Map) m).get(entry.getKey()))) {
                         return false;
                     }
@@ -48,71 +46,5 @@ public final class MapSchema extends BaseSchema {
         });
         this.schemas = newSchemas;
     }
-
-    /*
-    private boolean commonIsValid(BaseSchema bs, Object testObject) {
-        boolean isValid = true;
-
-        if (bs instanceof StringSchema) {
-            StringSchema ss = (StringSchema) bs;
-            if (!ss.isValid((String) testObject)) {
-                isValid = false;
-            }
-
-        } else if (bs instanceof NumberSchema) {
-            NumberSchema ns = (NumberSchema) bs;
-            if (testObject == null) {
-                if (!ns.isValid((String) testObject)) {
-                    isValid = false;
-                }
-            } else {
-                if (!ns.isValid((int) testObject)) {
-                    isValid = false;
-                }
-            }
-
-        } else if (bs instanceof MapSchema) {
-            MapSchema ms = (MapSchema) bs;
-            if (!ms.isValid((Map) testObject)) {
-                isValid = false;
-            }
-        }
-
-        return isValid;
-    }
-
-    private boolean deepIsValid(Map testMap) {
-        boolean isValid = true;
-
-        for (Map.Entry<String, BaseSchema> entry : schemas.entrySet()) {
-
-            if (!commonIsValid(entry.getValue(), testMap.get(entry.getKey()))) {
-                isValid = false;
-                break;
-            }
-
-        }
-
-        return isValid;
-    }
-
-    public boolean isValid(Map testMap) {
-        boolean rez = true;
-
-        if (testMap == null) {
-            return !required;
-        }
-
-        if (schemas != null) {
-            rez = deepIsValid(testMap);
-        }
-
-        if (sizeof != null && testMap.size() != sizeof) {
-            rez = false;
-        }
-
-        return rez;
-    }
-    */
 
 }
