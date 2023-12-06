@@ -9,7 +9,7 @@ import java.util.Map;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 
-public class SchemaTest {
+public class MapSchemaTest {
 
     @Test
     void mapSchemaRequiredTest() {
@@ -34,7 +34,7 @@ public class SchemaTest {
     }
 
     @Test
-    void apSchemaDeepIsValidTest() {
+    void mapSchemaDeepIsValidTest() {
 
         Validator v = new Validator();
         MapSchema schema = v.map();

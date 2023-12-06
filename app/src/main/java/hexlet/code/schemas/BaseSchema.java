@@ -10,6 +10,11 @@ public class BaseSchema {
 
     protected List<Predicate<Object>> checkouts = new ArrayList<>();
 
+    /*public void required(){
+        required = true;
+    }*/
+
+
     public final <T> boolean isValid(T t) {
         //return isValidP.test(t);
         //return getIsValidP().isValidP.test(t);
