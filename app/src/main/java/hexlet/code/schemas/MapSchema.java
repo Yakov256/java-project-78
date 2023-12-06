@@ -12,11 +12,15 @@ public final class MapSchema extends BaseSchema {
 
     public MapSchema required() {
         super.required = true;
+
+        super.checkouts.add(m -> m != null);
         return this;
     }
 
     public MapSchema sizeof(Integer size) {
         this.sizeof = size;
+
+        //super.checkouts.add(m -> m );
         return this;
     }
 

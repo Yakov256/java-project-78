@@ -14,7 +14,15 @@ public final class NumberSchema extends BaseSchema {
         this.required = true;
 
         //System.out.println("required - super.checkouts.add(n -> n != null)");
-        super.checkouts.add(n -> n != null || !required);
+        super.checkouts.add(n -> {
+            if (n == null) {
+                return !required;
+            } else if (n instanceof Number) {
+                return true;
+            }
+
+            return false;
+        });
         return this;
     }
 

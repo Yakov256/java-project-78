@@ -10,15 +10,6 @@ public class BaseSchema {
 
     protected List<Predicate<Object>> checkouts = new ArrayList<>();
 
-    /*public boolean isValid(Object testObject) {
-        if (testObject == null) {
-            return !required;
-        }
-        return true;
-    }*/
-
-    //Predicate<BaseSchema> isValidP;
-
     public final <T> boolean isValid(T t) {
         //return isValidP.test(t);
         //return getIsValidP().isValidP.test(t);
@@ -34,14 +25,5 @@ public class BaseSchema {
         return rez;
     }
 
-    /*private BaseSchema getIsValidP() {
-        return (BaseSchema) isValidP;
-    }*/
-
-    /*public BaseSchema() {
-        isValidP = t -> {
-            return true;
-        };
-    }*/
 
 }
