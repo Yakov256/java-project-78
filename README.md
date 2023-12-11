@@ -8,12 +8,12 @@
 
 
 **Описание**  
-
 Валидатор данных – библиотека, с помощью которой можно проверять корректность любых данных.  
 Валидатор функционирует следующим образом:
 1. Cначала создается объект валидатора.
 2. Cоздаем и настраиваем схему проверки данных.
 3. Проводим проверку данных, используя ранее созданную схему.
+  
   
 **Пример использования:**  
 
@@ -49,14 +49,4 @@ schema.isValid(human1); // true
 Map<String, Object> human2 = new HashMap<>();  
 human2.put("name", "");  
 human2.put("age", null);  
-schema.isValid(human1); // false  
- 
-**Сборка**
-| Описание | Команда |
-|----------|--------|
-| Start    | make |
-| Setup    | make build |
-| Run      | make run-dist |
-| Run tests | make test |
-| Run checkstyle | make lint |
-
+schema.isValid(human1); // false
