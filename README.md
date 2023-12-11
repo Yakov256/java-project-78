@@ -4,16 +4,19 @@
 [![Actions Status](https://github.com/Yakov256/java-project-78/actions/workflows/hexlet-check.yml/badge.svg)](https://github.com/Yakov256/java-project-78/actions)
 ![Java CI](https://github.com/Yakov256/java-project-78/actions/workflows/main.yml/badge.svg)
 [![Maintainability](https://api.codeclimate.com/v1/badges/4da14dcd9b41aad948e7/maintainability)](https://codeclimate.com/github/Yakov256/java-project-78/maintainability)
-[![Test Coverage](https://api.codeclimate.com/v1/badges/4da14dcd9b41aad948e7/test_coverage)](https://codeclimate.com/github/Yakov256/java-project-78/test_coverage)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/4da14dcd9b41aad948e7/test_coverage)](https://codeclimate.com/github/Yakov256/java-project-78/test_coverage)  
 
-**Описание**
+
+**Описание**  
+
 Валидатор данных – библиотека, с помощью которой можно проверять корректность любых данных.  
 Валидатор функционирует следующим образом:
 1. Cначала создается объект валидатора.
 2. Cоздаем и настраиваем схему проверки данных.
 3. Проводим проверку данных, используя ранее созданную схему.
-
+  
 **Пример использования:**  
+
 import hexlet.code.Validator;  
 import hexlet.code.schemas.StringSchema;  
 import hexlet.code.schemas.NumberSchema;  
