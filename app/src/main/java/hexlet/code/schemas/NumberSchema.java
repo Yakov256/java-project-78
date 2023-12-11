@@ -16,11 +16,9 @@ public final class NumberSchema extends BaseSchema {
         super.checkouts.add(n -> {
             if (n == null) {
                 return !required;
-            } else if (n instanceof Number) {
-                return true;
+            } else {
+                return n instanceof Number;
             }
-
-            return false;
         });
         return this;
     }

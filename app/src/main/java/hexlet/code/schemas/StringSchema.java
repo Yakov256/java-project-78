@@ -12,7 +12,7 @@ public final class StringSchema extends BaseSchema {
         super.checkouts.add(s -> {
             if (required) {
                 if (s == null) {
-                    return !required;
+                    return false;
                 } else {
                     return !s.equals("");
                 }
