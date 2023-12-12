@@ -22,15 +22,9 @@ public final class StringSchema extends BaseSchema {
         this.contains = includeString;
 
         super.checkouts.add(s -> {
-            // Проверка на нужна null т.к. в StringSchema null является валидным, если не задан флаг required
-            if (s == null) {
+            if (!(s instanceof String) || contains == null) {
                 return false;
             }
-
-            if (contains == null) {
-                return false;
-            }
-
             return (s.toString().contains(contains));
         });
         return this;

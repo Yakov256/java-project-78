@@ -19,7 +19,7 @@ public final class NumberSchema extends BaseSchema {
         this.positive = true;
 
         super.checkouts.add(n -> {
-            boolean rez = true;
+            boolean rez;
 
             if (n instanceof Number) {
                 rez = (Integer) n > 0;

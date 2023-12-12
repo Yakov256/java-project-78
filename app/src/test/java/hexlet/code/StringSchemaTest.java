@@ -16,6 +16,8 @@ public class StringSchemaTest {
         assertTrue(sSchema1.isValid(null));
         sSchema1.contains("123");
         assertFalse(sSchema1.isValid(null));
+        sSchema1.contains(null);
+        assertFalse(sSchema1.isValid("str"));
         assertTrue(sSchema1.contains("wh").isValid("what does the fox say"));
     }
 

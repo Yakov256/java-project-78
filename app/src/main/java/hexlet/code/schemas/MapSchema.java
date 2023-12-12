@@ -27,7 +27,7 @@ public final class MapSchema extends BaseSchema {
     public void shape(Map<String, BaseSchema> newSchemas) {
 
         super.checkouts.add(m -> {
-            if (m == null || schemas == null) {
+            if (schemas == null) {
                 return false;
             }
 
@@ -37,7 +37,6 @@ public final class MapSchema extends BaseSchema {
                         return false;
                     }
                 }
-
             }
 
             return true;

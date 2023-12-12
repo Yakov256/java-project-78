@@ -31,7 +31,7 @@ public class NumberSchemaTest {
         // Пока не вызван метод required(), null считается валидным
         assertTrue(schema.isValid(null)); // true
 
-        schema.required();
+        assertFalse(schema.required().isValid(null));
         assertFalse(schema.isValid(null)); // false
         assertFalse(schema.isValid("5")); // false
         assertTrue(schema.isValid(10)); // true
@@ -41,13 +41,12 @@ public class NumberSchemaTest {
     void numberSchemaRangeTest() {
         Validator v = new Validator();
         NumberSchema schema = v.number();
-        schema.range(5, 10);
+        assertTrue(schema.range(5, 10).isValid(5));
 
-        assertTrue(schema.isValid(5)); // true
-        assertTrue(schema.isValid(9)); // true
-        assertTrue(schema.isValid(10)); // true
-        assertFalse(schema.isValid(4)); // false
-        assertFalse(schema.isValid(11)); // false
+        assertTrue(schema.isValid(9));
+        assertTrue(schema.isValid(10));
+        assertFalse(schema.isValid(4));
+        assertFalse(schema.isValid(11));
     }
 
 }

@@ -13,12 +13,6 @@ public class BaseSchema {
     public final <T> boolean isValid(T t) {
 
         boolean rez = true;
-        /*checkouts.forEach(checkout -> {
-            if (!checkout.test(t)) {
-                rez = false;
-                break;
-            }
-        });*/
 
         for (Predicate<Object> checkout: checkouts) {
             if (!checkout.test(t)) {
