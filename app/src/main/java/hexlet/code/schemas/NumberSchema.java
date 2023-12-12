@@ -12,14 +12,6 @@ public final class NumberSchema extends BaseSchema {
 
     public NumberSchema required() {
         required = true;
-
-        super.checkouts.add(n -> {
-            if (n == null) {
-                return !required;
-            } else {
-                return n instanceof Number;
-            }
-        });
         return this;
     }
 
@@ -28,18 +20,11 @@ public final class NumberSchema extends BaseSchema {
 
         super.checkouts.add(n -> {
             boolean rez = true;
-            if (n == null) {
-                if (required) {
-                    return false;
-                } else if (positive) {
-                    return true;
-                }
+
+            if (n instanceof Number) {
+                rez = (Integer) n > 0;
             } else {
-                if (n instanceof Number) {
-                    rez = (Integer) n > 0;
-                } else {
-                    rez = false;
-                }
+                rez = !required;
             }
 
             return rez;
@@ -55,4 +40,7 @@ public final class NumberSchema extends BaseSchema {
         return this;
     }
 
+    public NumberSchema() {
+        super.checkouts.add(n -> (n instanceof Number) || !required);
+    }
 }
