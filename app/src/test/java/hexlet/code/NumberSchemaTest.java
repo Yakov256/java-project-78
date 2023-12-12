@@ -16,11 +16,11 @@ public class NumberSchemaTest {
         assertTrue(nSchema.isValid(-10));
         assertFalse(nSchema.positive().isValid(-10));
         assertTrue(nSchema.isValid(10));
-        assertTrue(nSchema.positive().isValid(null)); // true
+        assertTrue(nSchema.positive().isValid(null));
         // Потому что ранее мы вызвали метод positive()
-        assertFalse(nSchema.isValid(-10)); // false
+        assertFalse(nSchema.isValid(-10));
         //  Ноль — не положительное число
-        assertFalse(nSchema.isValid(0)); // false
+        assertFalse(nSchema.isValid(0));
     }
 
     @Test
@@ -29,12 +29,12 @@ public class NumberSchemaTest {
         NumberSchema schema = v.number();
 
         // Пока не вызван метод required(), null считается валидным
-        assertTrue(schema.isValid(null)); // true
+        assertTrue(schema.isValid(null));
 
         assertFalse(schema.required().isValid(null));
-        assertFalse(schema.isValid(null)); // false
-        assertFalse(schema.isValid("5")); // false
-        assertTrue(schema.isValid(10)); // true
+        assertFalse(schema.isValid(null));
+        assertFalse(schema.isValid("5"));
+        assertTrue(schema.isValid(10));
     }
 
     @Test
