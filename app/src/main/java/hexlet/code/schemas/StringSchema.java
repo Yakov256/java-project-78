@@ -8,17 +8,6 @@ public final class StringSchema extends BaseSchema {
 
     public StringSchema required() {
         super.required = true;
-
-        super.checkouts.add(s -> {
-            if (required) {
-                if (s == null) {
-                    return false;
-                } else {
-                    return !s.equals("");
-                }
-            }
-            return true;
-        });
         return this;
     }
 
@@ -33,13 +22,32 @@ public final class StringSchema extends BaseSchema {
         this.contains = includeString;
 
         super.checkouts.add(s -> {
+            // Проверка на нужна null т.к. в StringSchema null является валидным, если не задан флаг required
             if (s == null) {
                 return false;
-            } else {
-                return (s.toString().contains(contains));
             }
+
+            if (contains == null) {
+                return false;
+            }
+
+            return (s.toString().contains(contains));
         });
         return this;
     }
 
+    public StringSchema() {
+
+        super.checkouts.add(s -> {
+            if (required) {
+                if (s == null) {
+                    return false;
+                } else {
+                    return !s.equals("");
+                }
+            }
+            return true;
+        });
+
+    }
 }
