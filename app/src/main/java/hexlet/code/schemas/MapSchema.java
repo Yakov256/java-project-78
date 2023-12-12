@@ -13,15 +13,13 @@ public final class MapSchema extends BaseSchema {
 
     public MapSchema required() {
         super.required = true;
-
-        super.checkouts.add(m -> m != null && m instanceof Map<?, ?>);
         return this;
     }
 
     public MapSchema sizeof(Integer size) {
         this.sizeof = size;
 
-        super.checkouts.add(m -> (m != null && ((Map) m).size() == sizeof));
+        super.checkouts.add(m -> (((Map) m).size() == sizeof));
         return this;
     }
 
@@ -47,4 +45,7 @@ public final class MapSchema extends BaseSchema {
         this.schemas = newSchemas;
     }
 
+    public MapSchema() {
+        super.checkouts.add(m -> (m instanceof Map<?, ?> || !required));
+    }
 }
