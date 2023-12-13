@@ -14,7 +14,7 @@ public final class StringSchema extends BaseSchema {
     public StringSchema minLength(int strMinLength) {
         this.minLength = strMinLength;
         super.checkouts.add(s -> {
-            System.out.println("StringSchema - minLength");
+            //System.out.println("StringSchema - minLength");
             if (s instanceof String) {
                 return s.toString().length() >= minLength;
             }

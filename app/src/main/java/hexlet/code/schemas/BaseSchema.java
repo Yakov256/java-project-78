@@ -2,6 +2,7 @@ package hexlet.code.schemas;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.function.Predicate;
 
 public class BaseSchema {
@@ -14,8 +15,9 @@ public class BaseSchema {
 
         boolean rez = true;
         //System.out.println("- isValid - checking started");
+        //System.out.println("" + t + " - " + (t instanceof Map));
 
-        if (required) {
+        if (required || t instanceof Map) {
             for (Predicate<Object> checkout: checkouts) {
                 if (!checkout.test(t)) {
                     rez = false;
