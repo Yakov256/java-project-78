@@ -11,7 +11,6 @@ public final class NumberSchema extends BaseSchema {
     private int rangeMax = Integer.MAX_VALUE;
 
     public NumberSchema required() {
-        //System.out.println("NumberSchema - required");
         required = true;
         return this;
     }
@@ -25,12 +24,8 @@ public final class NumberSchema extends BaseSchema {
                 rez = (Integer) n > 0;
             } else {
                 rez = !required;
-                //rez = false;
             }
 
-            //System.out.println("NumberSchema - positive: " + rez);
-            //System.out.println("this.positive: " + this.positive);
-            //System.out.println("n:" + n);
             return rez;
         });
         return this;

@@ -14,11 +14,9 @@ public final class StringSchema extends BaseSchema {
     public StringSchema minLength(int strMinLength) {
         this.minLength = strMinLength;
         super.checkouts.add(s -> {
-            //System.out.println("StringSchema - minLength");
             if (s instanceof String) {
                 return s.toString().length() >= minLength;
             }
-
             return false;
         });
         return this;
@@ -28,7 +26,6 @@ public final class StringSchema extends BaseSchema {
         this.contains = includeString;
 
         super.checkouts.add(s -> {
-            //System.out.println("StringSchema - contains");
             if (!(s instanceof String) || contains == null) {
                 return false;
             }
@@ -40,7 +37,6 @@ public final class StringSchema extends BaseSchema {
     public StringSchema() {
 
         super.checkouts.add(s -> {
-            //System.out.println("StringSchema - required");
             if (required) {
                 if (s == null) {
                     return false;
@@ -48,7 +44,6 @@ public final class StringSchema extends BaseSchema {
                     return !s.equals("");
                 }
             }
-            //System.out.println("StringSchema - required: true");
             return true;
         });
 
