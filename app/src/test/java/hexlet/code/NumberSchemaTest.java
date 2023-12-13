@@ -14,9 +14,9 @@ public class NumberSchemaTest {
         NumberSchema nSchema = v.number();
 
         assertTrue(nSchema.isValid(-10));
-        //assertFalse(nSchema.positive().isValid(-10));
         assertTrue(nSchema.isValid(10));
         assertTrue(nSchema.positive().isValid(null));
+        assertFalse(nSchema.positive().isValid(-5));
         // Потому что ранее мы вызвали метод positive()
         //assertFalse(nSchema.isValid(-10));
         //  Ноль — не положительное число

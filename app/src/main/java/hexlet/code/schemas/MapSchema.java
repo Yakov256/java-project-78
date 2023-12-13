@@ -27,12 +27,19 @@ public final class MapSchema extends BaseSchema {
     public void shape(Map<String, BaseSchema> newSchemas) {
 
         super.checkouts.add(m -> {
+            //System.out.println("BaseSchema - shape");
             if (schemas == null) {
                 return false;
             }
 
             for (Map.Entry<String, BaseSchema> entry : schemas.entrySet()) {
                 if (((Map) m).containsKey(entry.getKey())) {
+                    //System.out.println("--------------------------------------");
+                    //System.out.println("entry.getValue() - " + entry.getValue()
+                    // + " required: " + entry.getValue().required);
+                    //System.out.println("entry.getKey() - " + entry.getKey());
+                    //System.out.println("m - " + m + " check: " + (entry.getValue().isValid(m)));
+                    //if (!entry.getValue().isValid(((Map) m).get(entry.getKey()))) {
                     if (!entry.getValue().isValid(((Map) m).get(entry.getKey()))) {
                         return false;
                     }
@@ -45,6 +52,9 @@ public final class MapSchema extends BaseSchema {
     }
 
     public MapSchema() {
-        super.checkouts.add(m -> (m instanceof Map<?, ?> || !required));
+        super.checkouts.add(m -> {
+            //System.out.println("MapSchema - required check: " + (m instanceof Map<?, ?> || !required));
+            return (m instanceof Map<?, ?> || !required);
+        });
     }
 }

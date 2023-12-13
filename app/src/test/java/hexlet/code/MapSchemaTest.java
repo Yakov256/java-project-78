@@ -60,11 +60,10 @@ public class MapSchemaTest {
         assertFalse(schema.isValid(human3));
         //assertTrue(schema.isValid(human3));
 
-        schema.required();
         Map<String, Object> human4 = new HashMap<>();
         human4.put("name", "Valya");
         human4.put("age", -5);
-        //assertFalse(schema.isValid(human4));
+        assertFalse(schema.isValid(human4));
 
     }
 

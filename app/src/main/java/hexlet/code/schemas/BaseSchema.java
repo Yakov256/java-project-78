@@ -2,7 +2,6 @@ package hexlet.code.schemas;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 import java.util.function.Predicate;
 
 public class BaseSchema {
@@ -17,20 +16,18 @@ public class BaseSchema {
         //System.out.println("- isValid - checking started");
         //System.out.println("" + t + " - " + (t instanceof Map));
 
-        if (required || t instanceof Map) {
-            for (Predicate<Object> checkout: checkouts) {
-                if (!checkout.test(t)) {
-                    rez = false;
-                    break;
-                }
+        //if (required || t instanceof Map) {
+        for (Predicate<Object> checkout: checkouts) {
+            if (!checkout.test(t)) {
+                rez = false;
+                break;
             }
-        } else {
+        }
+        /*} else {
             if (!checkouts.get(0).test(t)) {
                 rez = false;
             }
-        }
-
-
+        }*/
         //System.out.println("- isValid - checking complite: " + rez);
         return rez;
     }
