@@ -15,7 +15,9 @@ public class StringSchemaTest {
 
         assertTrue(sSchema1.isValid(null));
         sSchema1.contains("123");
-        assertFalse(sSchema1.isValid(null));
+        //assertFalse(sSchema1.isValid(null));
+        assertTrue(sSchema1.isValid(null));
+        sSchema1.required();
         sSchema1.contains(null);
         assertFalse(sSchema1.isValid("str"));
         assertTrue(sSchema1.contains("wh").isValid("what does the fox say"));
@@ -25,8 +27,8 @@ public class StringSchemaTest {
     void stringSchemaMinLengthTest() {
         Validator v = new Validator();
         StringSchema sSchema2 = v.string();
-
-        assertTrue(sSchema2.isValid(""));
+        sSchema2.required();
+        assertFalse(sSchema2.isValid(""));
         assertTrue(sSchema2.minLength(5).isValid("123456"));
         assertFalse(sSchema2.minLength(7).isValid("123456"));
     }
@@ -36,6 +38,9 @@ public class StringSchemaTest {
         Validator v = new Validator();
         StringSchema sSchema3 = v.string();
 
+        assertTrue(sSchema3.isValid(null));
+        //sSchema3.contains("123");
+        sSchema3.minLength(5);
         assertTrue(sSchema3.isValid(null));
         assertFalse(sSchema3.required().isValid(""));
     }

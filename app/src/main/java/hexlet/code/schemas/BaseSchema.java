@@ -13,14 +13,23 @@ public class BaseSchema {
     public final <T> boolean isValid(T t) {
 
         boolean rez = true;
+        //System.out.println("- isValid - checking started");
 
-        for (Predicate<Object> checkout: checkouts) {
-            if (!checkout.test(t)) {
+        if (required) {
+            for (Predicate<Object> checkout: checkouts) {
+                if (!checkout.test(t)) {
+                    rez = false;
+                    break;
+                }
+            }
+        } else {
+            if (!checkouts.get(0).test(t)) {
                 rez = false;
-                break;
             }
         }
 
+
+        //System.out.println("- isValid - checking complite: " + rez);
         return rez;
     }
 
