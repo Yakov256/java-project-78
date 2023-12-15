@@ -17,10 +17,6 @@ public class NumberSchemaTest {
         assertTrue(nSchema.isValid(10));
         assertTrue(nSchema.positive().isValid(null));
         assertFalse(nSchema.positive().isValid(-5));
-        // Потому что ранее мы вызвали метод positive()
-        //assertFalse(nSchema.isValid(-10));
-        //  Ноль — не положительное число
-        //assertFalse(nSchema.isValid(0));
     }
 
     @Test
@@ -45,8 +41,6 @@ public class NumberSchemaTest {
 
         assertTrue(schema.isValid(9));
         assertTrue(schema.isValid(10));
-        //assertFalse(schema.isValid(4));
-        //assertFalse(schema.isValid(11));
     }
 
 }

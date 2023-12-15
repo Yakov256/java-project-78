@@ -15,7 +15,6 @@ public class StringSchemaTest {
 
         assertTrue(sSchema1.isValid(null));
         sSchema1.contains("123");
-        //assertFalse(sSchema1.isValid(null));
         assertFalse(sSchema1.isValid(null));
         sSchema1.required();
         sSchema1.contains(null);
@@ -39,7 +38,6 @@ public class StringSchemaTest {
         StringSchema sSchema3 = v.string();
 
         assertTrue(sSchema3.isValid(null));
-        //sSchema3.contains("123");
         sSchema3.minLength(5);
         assertFalse(sSchema3.isValid(null));
         assertFalse(sSchema3.required().isValid(""));
