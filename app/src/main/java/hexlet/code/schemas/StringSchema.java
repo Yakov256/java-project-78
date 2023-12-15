@@ -6,6 +6,19 @@ public final class StringSchema extends BaseSchema {
     //contains() — добавляет в схему ограничение по содержимому строки. Строка должна содержать определённую подстроку
     private String contains = null;
 
+    public StringSchema() {
+        super.checkouts.add(s -> {
+            if (required) {
+                if (s == null) {
+                    return false;
+                } else {
+                    return !s.equals("");
+                }
+            }
+            return true;
+        });
+    }
+
     public StringSchema required() {
         super.required = true;
         return this;
@@ -34,18 +47,4 @@ public final class StringSchema extends BaseSchema {
         return this;
     }
 
-    public StringSchema() {
-
-        super.checkouts.add(s -> {
-            if (required) {
-                if (s == null) {
-                    return false;
-                } else {
-                    return !s.equals("");
-                }
-            }
-            return true;
-        });
-
-    }
 }

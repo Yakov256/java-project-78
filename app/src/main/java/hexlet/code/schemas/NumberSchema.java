@@ -10,6 +10,10 @@ public final class NumberSchema extends BaseSchema {
     private int rangeMin = Integer.MIN_VALUE;
     private int rangeMax = Integer.MAX_VALUE;
 
+    public NumberSchema() {
+        super.checkouts.add(n -> (n instanceof Number) || !required);
+    }
+
     public NumberSchema required() {
         required = true;
         return this;
@@ -39,7 +43,4 @@ public final class NumberSchema extends BaseSchema {
         return this;
     }
 
-    public NumberSchema() {
-        super.checkouts.add(n -> (n instanceof Number) || !required);
-    }
 }
