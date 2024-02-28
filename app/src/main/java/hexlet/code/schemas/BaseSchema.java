@@ -1,8 +1,7 @@
 package hexlet.code.schemas;
 
-import java.util.ArrayList;
 import java.util.LinkedHashMap;
-import java.util.List;
+import java.util.Map;
 import java.util.function.Predicate;
 
 public class BaseSchema {
@@ -10,15 +9,18 @@ public class BaseSchema {
     protected boolean required;
 
     //protected List<Predicate<Object>> checkouts = new ArrayList<>();
-    protected LinkedHashMap<String, Predicate<Object>> checkouts = new LinkedHashMap<>();
-
+    protected Map<String, Predicate<Object>> checkouts = new LinkedHashMap<>();
 
     public final boolean isValid(Object obj) {
-        if (!required) {
+        if (obj == null) {
+            return !required;
+        }
+
+        /*if (!required) {
             if (!checkouts.get("required").test(obj)) {
                 return true;
             }
-        }
+        }*/
         return checkouts.values().stream().allMatch(x -> x.test(obj));
     }
 
