@@ -24,9 +24,8 @@ public final class MapSchema extends BaseSchema {
 
     public MapSchema sizeof(Integer size) {
         //this.sizeof = size;
-
-        //super.checkouts.add(m -> (((Map) m).size() == sizeof));
-        super.checkouts.add(m -> (((Map) m).size() == size));
+        super.checkouts.add(m -> (((Map) m).size() == sizeof));
+        //super.checkouts.add(m -> (((Map) m).size() == size));
         return this;
     }
 
