@@ -4,7 +4,7 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.function.Predicate;
 
-public class BaseSchema <T> {
+public class BaseSchema {
     //required — делает данные обязательными для заполнения. Не null.
     protected boolean required;
 
