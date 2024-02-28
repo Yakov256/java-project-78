@@ -53,7 +53,7 @@ public class MapSchemaTest {
         human2.put("name", "Maya");
         human2.put("age", null);
         assertTrue(schema.isValid(human2));
-
+//
         Map<String, Object> human3 = new HashMap<>();
         human3.put("name", "");
         human3.put("age", null);

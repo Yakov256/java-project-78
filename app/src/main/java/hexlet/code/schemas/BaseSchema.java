@@ -5,9 +5,8 @@ import java.util.List;
 import java.util.function.Predicate;
 
 public class BaseSchema {
-    //required — делает данные обязательными для заполнения. Не null.
+    //required — делает данные обязательными для заполнения. Не null..
     protected boolean required;
-
     protected List<Predicate<Object>> checkouts = new ArrayList<>();
 
     public final <T> boolean isValid(T t) {

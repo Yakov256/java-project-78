@@ -34,7 +34,7 @@ public final class NumberSchema extends BaseSchema {
         });
         return this;
     }
-
+//
     public NumberSchema range(int min, int max) {
         this.rangeMin = min;
         this.rangeMax = max;
