@@ -7,7 +7,7 @@ public final class MapSchema extends BaseSchema {
 
     //sizeof — добавляет ограничение на размер словаря.
     // Количество пар ключ-значений в объекте Map должно быть равно заданному
-    private Integer sizeof = null;
+    //private Integer sizeof = null;
 
     private Map<String, BaseSchema> schemas;
 
@@ -23,8 +23,7 @@ public final class MapSchema extends BaseSchema {
     }
 
     public MapSchema sizeof(Integer size) {
-        this.sizeof = size;
-
+        //this.sizeof = size;
         super.checkouts.add(m -> (((Map) m).size() == sizeof));
         //super.checkouts.add(m -> (((Map) m).size() == size));
         return this;
