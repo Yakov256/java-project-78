@@ -27,7 +27,7 @@ public final class StringSchema extends BaseSchema {
         super.required = true;
         return this;
     }
-
+//
     public StringSchema minLength(int strMinLength) {
         this.minLength = strMinLength;
         super.checkouts.put("minLength", s -> {

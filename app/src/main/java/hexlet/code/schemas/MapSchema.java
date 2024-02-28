@@ -5,7 +5,7 @@ import java.util.Map;
 
 public final class MapSchema extends BaseSchema {
 
-    //sizeof — добавляет ограничение на размер словаря.
+    //sizeof — добавляет ограничение на размер словаря..
     // Количество пар ключ-значений в объекте Map должно быть равно заданному
     private Integer sizeof = null;
 

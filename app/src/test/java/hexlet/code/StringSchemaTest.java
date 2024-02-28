@@ -31,7 +31,7 @@ public class StringSchemaTest {
         assertTrue(sSchema2.minLength(5).isValid("123456"));
         assertFalse(sSchema2.minLength(7).isValid("123456"));
     }
-
+//
     @Test
     void stringSchemaRequiredTest() {
         Validator v = new Validator();

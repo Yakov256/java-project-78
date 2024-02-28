@@ -5,11 +5,11 @@ import java.util.Map;
 import java.util.function.Predicate;
 
 public class BaseSchema {
-    //required — делает данные обязательными для заполнения. Не null.
+    //required — делает данные обязательными для заполнения. Не null..
     protected boolean required;
 
-    //protected List<Predicate<Object>> checkouts = new ArrayList<>();
-    protected Map<String, Predicate<Object>> checkouts = new LinkedHashMap<>();
+    protected List<Predicate<Object>> checkouts = new ArrayList<>();
+
 
     public final boolean isValid(Object obj) {
         if (obj == null) {
