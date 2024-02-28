@@ -11,10 +11,15 @@ public final class MapSchema extends BaseSchema {
 
     private Map<String, BaseSchema> schemas;
 
-    public MapSchema() {
-        super.checkouts.add(m -> {
-            return (m instanceof Map<?, ?> || !required);
+    /*public MapSchema() {
+        super.checkouts.put(m -> {
+            //return ("required", m instanceof Map<?, ?> || !required);
+            return ("required", m -> (instanceof Map<?, ?> || !required));
         });
+    }*/
+
+    public MapSchema() {
+        super.checkouts.put("isMap", m -> (m == null) || (m instanceof Map<?, ?>));
     }
 
     public MapSchema required() {
@@ -26,13 +31,13 @@ public final class MapSchema extends BaseSchema {
         this.sizeof = size;
 
         //super.checkouts.add(m -> (((Map) m).size() == size));
-        super.checkouts.add(m -> (((Map) m).size() == sizeof));
+        super.checkouts.put("sizeof", m -> (((Map) m).size() == sizeof));
         return this;
     }
 
     public void shape(Map<String, BaseSchema> newSchemas) {
 
-        super.checkouts.add(m -> {
+        super.checkouts.put("shape", m -> {
             if (schemas == null) {
                 return false;
             }

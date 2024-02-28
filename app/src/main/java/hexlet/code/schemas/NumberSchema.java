@@ -10,8 +10,12 @@ public final class NumberSchema extends BaseSchema {
     private int rangeMin = Integer.MIN_VALUE;
     private int rangeMax = Integer.MAX_VALUE;
 
-    public NumberSchema() {
+    /*public NumberSchema() {
         super.checkouts.add(n -> (n instanceof Number) || !required);
+    }*/
+
+    public NumberSchema() {
+        super.checkouts.put("isNumber", n -> (n == null) || (n instanceof Integer));
     }
 
     public NumberSchema required() {
@@ -21,7 +25,7 @@ public final class NumberSchema extends BaseSchema {
 
     public NumberSchema positive() {
         this.positive = true;
-        super.checkouts.add(n -> {
+        super.checkouts.put("positive", n -> {
             boolean rez;
 
             if (n instanceof Number) {
@@ -39,7 +43,7 @@ public final class NumberSchema extends BaseSchema {
         this.rangeMin = min;
         this.rangeMax = max;
 
-        super.checkouts.add(n -> rangeMin <= (Integer) n && (Integer) n <= rangeMax);
+        super.checkouts.put("range", n -> rangeMin <= (Integer) n && (Integer) n <= rangeMax);
         return this;
     }
 
